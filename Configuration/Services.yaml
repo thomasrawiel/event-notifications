@@ -1,0 +1,11 @@
+services:
+  TRAW\EventNotifications\Events\Backend\AfterBackendUserLoginEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'backendLogin'
+        event: TRAW\EventDispatch\Events\Backend\BackendUserLoginEvent
+  TRAW\EventNotifications\Events\Cache\ClearCacheEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'clearCache'
+        event: TRAW\EventDispatch\Events\Cache\ClearCacheEvent

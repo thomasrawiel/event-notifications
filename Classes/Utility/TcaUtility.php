@@ -1,0 +1,72 @@
+<?php
+
+
+namespace TRAW\EventNotifications\Utility;
+
+
+use TRAW\EventNotifications\Domain\Model\Dto\EmConfiguration;
+use TRAW\EventNotifications\Service\SettingsService;
+use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
+/**
+ * Class EventsRegistry
+ * @package TRAW\EventNotifications\Events
+ */
+class TcaUtility
+{
+    /**
+     * @var EmConfiguration
+     */
+    protected EmConfiguration $settings;
+    /**
+     * @var \TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration
+     */
+    protected \TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration $eventListenerSettings;
+
+    /**
+     * EventsRegistry constructor.
+     */
+    public function __construct()
+    {
+        $this->settings = SettingsService::getSettings();
+        $this->eventListenerSettings = SettingsService::getEventListenerSettings();
+    }
+
+    /**
+     * @param array $configuration
+     */
+    public function getNotificationTypes(array &$configuration)
+    {
+        if($this->settings->getEnableEmailNotifications()) {
+            $configuration['items'][] = [
+                LocalizationUtility::translate($configuration['config']['itemsProcConfig']['languageKey'] . '1') ?? 'email',
+                1,
+                'ext-eventnotifications-type-email',
+            ];
+        }
+        if($this->settings->getEnableMsTeamsNotifications()) {
+            $configuration['items'][] = [
+                LocalizationUtility::translate($configuration['config']['itemsProcConfig']['languageKey'] . '2') ?? 'teams',
+                2,
+                'ext-eventnotifications-type-teams',
+            ];
+        }
+    }
+
+    /**
+     * @param array $configuration
+     */
+    public function getEventSelectItems(array &$configuration)
+    {
+        foreach (ObjectAccess::getGettableProperties($this->eventListenerSettings) as $propertyName => $propertyValue) {
+            if ($propertyValue > 0) {
+                $configuration['items'][] = [
+                    LocalizationUtility::translate($configuration['config']['itemsProcConfig']['languageKey'] . $propertyName) ?? $propertyName,
+                    $propertyName,
+                ];
+            }
+
+        }
+    }
+}

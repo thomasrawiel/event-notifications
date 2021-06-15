@@ -1,0 +1,5 @@
+#customCategory=notifications=LLL:EXT:event_notifications/Resources/Private/Language/locallang_settings.xlf:settings.notifications
+# cat=notifications; type=boolean; label=LLL:EXT:event_notifications/Resources/Private/Language/locallang_settings.xlf:enableEmailNotifications
+enableEmailNotifications = 0
+# cat=notifications; type=boolean; label=LLL:EXT:event_notifications/Resources/Private/Language/locallang_settings.xlf:enableMsTeamsNotifications
+enableMsTeamsNotifications = 0

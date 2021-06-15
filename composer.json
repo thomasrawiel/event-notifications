@@ -14,7 +14,8 @@
     }
   },
   "require": {
-    "typo3/cms-core": "^10 || ^11"
+    "typo3/cms-core": "^10 || ^11",
+    "traw/event-dispatch": "dev-develop"
   },
   "replace": {
     "traw/notifications": "self.version"
