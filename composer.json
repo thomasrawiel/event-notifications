@@ -1,0 +1,27 @@
+{
+  "name": "traw/event-notifications",
+  "type": "typo3-cms-extension",
+  "keywords": [
+    "TYPO3 CMS",
+    "Events",
+    "Backend",
+    "Notifications"
+  ],
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "TRAW\\EventNotifications\\": "Classes/"
+    }
+  },
+  "require": {
+    "typo3/cms-core": "^10 || ^11"
+  },
+  "replace": {
+    "traw/notifications": "self.version"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "event_notifications"
+    }
+  }
+}
