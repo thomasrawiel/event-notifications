@@ -26,6 +26,7 @@ CREATE TABLE tx_eventnotifications_domain_model_notification
     type               varchar(100)                   NOT NULL DEFAULT '0',
     notes              text,
     events text,
+    teams_webhook_url text,
 
 
     PRIMARY KEY (uid),

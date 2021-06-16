@@ -13,15 +13,48 @@ class Notification extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @var string
      */
-    protected string $title;
+    protected string $title = '';
     /**
      * @var int
      */
-    protected int $type;
+    protected int $type = 0;
     /**
      * @var string
      */
-    protected string $events;
+    protected string $events = '';
+
+    /**
+     * @return int
+     */
+    public function getUid(): int
+    {
+        return $this->uid;
+    }
+
+    /**
+     * @param int $uid
+     */
+    public function setUid(int $uid): void
+    {
+        $this->uid = $uid;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPid(): int
+    {
+        return $this->pid;
+    }
+
+    /**
+     * @param int $pid
+     */
+    public function setPid(int $pid): void
+    {
+        $this->pid = $pid;
+    }
+
 
     /**
      * @return string

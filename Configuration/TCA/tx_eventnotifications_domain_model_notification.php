@@ -44,16 +44,18 @@ return [
                 --div--;${lll}tab.events, --palette--;;events,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
         ],
-        1 => [
+        \TRAW\EventNotifications\Utility\TcaUtility::NOTIFICATION_TYPE_EMAIL => [
             'showitem' => "
-                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,             
                 --div--;${lll}tab.events, --palette--;;events,
+                --div--;Microsoft Teams, --palette--;;email,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
         ],
-        2 => [
+        \TRAW\EventNotifications\Utility\TcaUtility::NOTIFICATION_TYPE_TEAMS => [
             'showitem' => "
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,
                 --div--;${lll}tab.events, --palette--;;events,
+                --div--;Microsoft Teams, --palette--;;teams,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
         ],
 
@@ -64,6 +66,12 @@ return [
         ],
         'events' => [
             'showitem' => 'events',
+        ],
+        'teams' => [
+            'showitem' => 'teams_webhook_url'
+        ],
+        'email' => [
+            'showitem' => '',
         ],
         'visibility' => [
             'showitem' => 'hidden, --linebreak--, starttime, endtime'
@@ -186,9 +194,27 @@ return [
                 'itemsProcFunc' => \TRAW\EventNotifications\Utility\TcaUtility::class . '->getEventSelectItems',
                 'itemsProcConfig' => [
                     'languageKey' => "${lll}events.type.",
-                ]
-
-            ]
+                ],
+            ],
         ],
+        'teams_webhook_url' => [
+            'exclude' => false,
+            'displayCond' => 'FIELD:type:=:1',
+            'label' => $lll . 'teams_webhook_url',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputLink',
+                'eval' => 'trim,required',
+                'fieldControl' => [
+                    'linkPopup' => [
+                        'options' => [
+                            'title' => $lll . 'teams_webhook_url',
+                            'blindLinkFields' => 'class,params,target,title',
+                            'blindLinkOptions' => 'file,folder,mail,page,spec,telephone',
+                        ],
+                    ],
+                ],
+            ]
+        ]
     ],
 ];

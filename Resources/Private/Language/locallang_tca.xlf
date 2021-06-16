@@ -28,6 +28,9 @@
             <trans-unit id="events">
                 <source>Notification Events</source>
             </trans-unit>
+            <trans-unit id="teams_webhook_url">
+                <source>Incoming Webhook URL</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

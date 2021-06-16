@@ -24,6 +24,9 @@ class TcaUtility
      */
     protected \TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration $eventListenerSettings;
 
+    public const NOTIFICATION_TYPE_EMAIL = 1;
+    public const NOTIFICATION_TYPE_TEAMS = 2;
+
     /**
      * EventsRegistry constructor.
      */
@@ -41,14 +44,14 @@ class TcaUtility
         if($this->settings->getEnableEmailNotifications()) {
             $configuration['items'][] = [
                 LocalizationUtility::translate($configuration['config']['itemsProcConfig']['languageKey'] . '1') ?? 'email',
-                1,
+                self::NOTIFICATION_TYPE_EMAIL,
                 'ext-eventnotifications-type-email',
             ];
         }
         if($this->settings->getEnableMsTeamsNotifications()) {
             $configuration['items'][] = [
                 LocalizationUtility::translate($configuration['config']['itemsProcConfig']['languageKey'] . '2') ?? 'teams',
-                2,
+                self::NOTIFICATION_TYPE_TEAMS,
                 'ext-eventnotifications-type-teams',
             ];
         }
@@ -66,7 +69,6 @@ class TcaUtility
                     $propertyName,
                 ];
             }
-
         }
     }
 }
