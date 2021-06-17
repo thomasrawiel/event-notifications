@@ -6,26 +6,48 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+/**
+ * Class RequestUtility
+ * @package TRAW\EventNotifications\Utility
+ */
 class RequestUtility
 {
+    /**
+     * @var RequestFactory|object|\Psr\Log\LoggerAwareInterface|\TYPO3\CMS\Core\SingletonInterface
+     */
     protected RequestFactory $requestFactory;
 
+    /**
+     * RequestUtility constructor.
+     */
     public function __construct()
     {
         $this->requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
     }
 
-    public function postToWebhook($webhook, $message)
+    /**
+     * @param string $webhook
+     * @param array $message
+     */
+    public function postToWebhook(string $webhook, string $message)
     {
-        $response = $this->sendRequest($webhook, 'POST', json_encode($message));
+        if ($this->messageIsJson($message)) {
+            $this->sendRequest($webhook, 'POST', $message);
+        }
+    }
+
+    protected function messageIsJson(string $message): bool
+    {
+        json_decode($message);
+        return json_last_error() === JSON_ERROR_NONE;
     }
 
     /**
-     * @param $endPoint
+     * @param $requestUrl
      * @param string $method
+     * @param null $body
      * @param array $additionalHeaders
      * @param array $additionalParams
-     * @param null $body
      * @return ResponseInterface|null
      */
     protected function sendRequest($requestUrl, string $method = "GET", $body = null, $additionalHeaders = [], $additionalParams = []): ?ResponseInterface

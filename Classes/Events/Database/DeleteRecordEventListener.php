@@ -12,8 +12,13 @@ use TRAW\EventNotifications\Utility\NotificationServiceUtility;
  * @package TRAW\EventNotifications\Events\Database
  */
 class DeleteRecordEventListener extends \TRAW\EventDispatch\Events\Database\DeleteRecordEventListener
-{public function invokeEventAction(AbstractEvent $event)
 {
-    NotificationServiceUtility::sendNotifications($event);
-}
+    /**
+     * @param AbstractEvent $event
+     * @return mixed|void
+     */
+    public function invokeEventAction(AbstractEvent $event)
+    {
+        NotificationServiceUtility::sendNotifications($event);
+    }
 }

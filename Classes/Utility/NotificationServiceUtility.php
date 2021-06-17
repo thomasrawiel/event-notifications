@@ -7,8 +7,6 @@ namespace TRAW\EventNotifications\Utility;
 use TRAW\EventDispatch\Events\AbstractEvent;
 use TRAW\EventNotifications\Notifications\DefaultNotification;
 use TRAW\EventNotifications\Notifications\MsTeamsNotification;
-use TRAW\EventNotifications\Service\Notifications\DefaultNotificationService;
-use TRAW\EventNotifications\Service\Notifications\NotificationMSTeamsService;
 use TRAW\EventNotifications\Service\NotificationService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -20,9 +18,9 @@ class NotificationServiceUtility
 {
     /**
      * @param int $type
-     * @return mixed|null
+     * @return string
      */
-    public static function getNotificationService(int $type)
+    public static function getNotificationService(int $type): string
     {
         $services = [
             DefaultNotification::class,

@@ -13,6 +13,10 @@ use TRAW\EventNotifications\Utility\NotificationServiceUtility;
  */
 class MoveRecordEventListener extends \TRAW\EventDispatch\Events\Database\MoveRecordEventListener
 {
+    /**
+     * @param AbstractEvent $event
+     * @return mixed|void
+     */
     public function invokeEventAction(AbstractEvent $event)
     {
         NotificationServiceUtility::sendNotifications($event);
