@@ -5,6 +5,7 @@ namespace TRAW\EventNotifications\Domain\Factory;
 
 
 use TRAW\EventNotifications\Domain\Model\Notification;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 
 /**
@@ -18,7 +19,11 @@ class NotificationFactory
      */
     public static function getSettableProperties(): array
     {
-        return ObjectAccess::getSettablePropertyNames(new Notification());
+        $properties = ObjectAccess::getSettablePropertyNames(new Notification());
+        foreach ($properties as $key => $property) {
+            $properties[$key] = GeneralUtility::camelCaseToLowerCaseUnderscored($property);
+        }
+        return $properties;
     }
 
     /**
@@ -31,7 +36,8 @@ class NotificationFactory
         $propertyNames = ObjectAccess::getSettablePropertyNames($notification);
 
         foreach ($propertyNames as $propertyName) {
-            $propertyValue = $data[$propertyName];
+            $dbprop = GeneralUtility::camelCaseToLowerCaseUnderscored($propertyName);
+            $propertyValue = $data[$dbprop];
             if (!in_array($propertyName, ['uid', 'pid'])) {
                 settype($propertyValue, gettype($notification->_getProperty($propertyName)));
             }

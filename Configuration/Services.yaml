@@ -2,10 +2,25 @@ services:
   TRAW\EventNotifications\Events\Backend\AfterBackendUserLoginEventListener:
     tags:
       - name: event.listener
-        identifier: 'backendLogin'
-        event: TRAW\EventDispatch\Events\Backend\BackendUserLoginEvent
+        identifier: 'traw-backendLogin'
+        event: TRAW\EventDispatch\Events\Backend\AfterBackendUserLoginEvent
   TRAW\EventNotifications\Events\Cache\ClearCacheEventListener:
     tags:
       - name: event.listener
-        identifier: 'clearCache'
+        identifier: 'traw-clearCache'
         event: TRAW\EventDispatch\Events\Cache\ClearCacheEvent
+  TRAW\EventNotifications\Events\Database\AfterDatabaseOperationEventListener:
+    tags:
+      - name: event.listener
+        identifer: 'traw-afterDatabaseOperation'
+        event: TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEvent
+  TRAW\EventNotifications\Events\Database\DeleteRecordEventListener:
+    tags:
+      - name: event.listener
+        identifer: 'traw-deleteRecord'
+        event: TRAW\EventDispatch\Events\Database\DeleteRecordEvent
+  TRAW\EventNotifications\Events\Database\MoveRecordEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'traw-moveRecord'
+        event: TRAW\EventDispatch\Events\Database\MoveRecordEvent

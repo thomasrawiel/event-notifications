@@ -52,6 +52,7 @@ class NotificationService
         /** @var Notification $notification */
         foreach ($this->notifications as $notification) {
             /** @var AbstractNotification $notificationService */
+            //todo: class_exists($notification->getType())
             $notificationService = GeneralUtility::makeInstance(NotificationServiceUtility::getNotificationService($notification->getType()));
             $notificationService->sendNotification($this->event, $notification);
         }

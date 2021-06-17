@@ -24,8 +24,8 @@ class TcaUtility
      */
     protected \TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration $eventListenerSettings;
 
-    public const NOTIFICATION_TYPE_EMAIL = 1;
-    public const NOTIFICATION_TYPE_TEAMS = 2;
+    public const NOTIFICATION_TYPE_EMAIL = 2;
+    public const NOTIFICATION_TYPE_TEAMS = 1;
 
     /**
      * EventsRegistry constructor.

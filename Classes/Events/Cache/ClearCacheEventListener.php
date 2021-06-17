@@ -2,8 +2,10 @@
 
 namespace TRAW\EventNotifications\Events\Cache;
 
+use TRAW\EventDispatch\Events\AbstractEvent;
 use TRAW\EventDispatch\Events\Cache\ClearCacheEvent;
 use TRAW\EventNotifications\Service\NotificationService;
+use TRAW\EventNotifications\Utility\NotificationServiceUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -11,17 +13,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @package TRAW\EventNotifications\Events\Cache
  */
 class ClearCacheEventListener extends \TRAW\EventDispatch\Events\Cache\ClearCacheEventListener
+{public function invokeEventAction(AbstractEvent $event)
 {
-    /**
-     * Method is automatically called when the event is triggered
-     *
-     * @param ClearCacheEvent $event
-     */
-    public function __invoke(ClearCacheEvent $event)
-    {
-        if ($this->eventListenerIsActive()) {
-            $notificationService = GeneralUtility::makeInstance(NotificationService::class, $event);
-            $notificationService->sendNotifications();
-        }
-    }
+    NotificationServiceUtility::sendNotifications($event);
+}
 }

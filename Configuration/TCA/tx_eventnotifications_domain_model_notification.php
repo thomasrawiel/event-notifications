@@ -22,8 +22,8 @@ return [
         'typeicon_column' => 'type',
         'typeicon_classes' => [
             'default' => 'ext-eventnotifications-type-default',
-            '1' => 'ext-eventnotifications-type-email',
-            '2' => 'ext-eventnotifications-type-teams',
+            \TRAW\EventNotifications\Utility\TcaUtility::NOTIFICATION_TYPE_TEAMS => 'ext-eventnotifications-type-teams',
+            \TRAW\EventNotifications\Utility\TcaUtility::NOTIFICATION_TYPE_EMAIL => 'ext-eventnotifications-type-email',
         ],
         'useColumnsForDefaultValues' => 'type',
         'default_sortby' => 'ORDER BY sorting DESC',

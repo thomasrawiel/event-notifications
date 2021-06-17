@@ -23,6 +23,24 @@ class Notification extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected string $events = '';
 
+    protected string $teamsWebhookUrl = '';
+
+    /**
+     * @return string
+     */
+    public function getTeamsWebhookUrl(): string
+    {
+        return $this->teamsWebhookUrl;
+    }
+
+    /**
+     * @param string $teamsWebhookUrl
+     */
+    public function setTeamsWebhookUrl(string $teamsWebhookUrl): void
+    {
+        $this->teamsWebhookUrl = $teamsWebhookUrl;
+    }
+
     /**
      * @return int
      */
