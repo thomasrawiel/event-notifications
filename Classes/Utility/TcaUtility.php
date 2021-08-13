@@ -4,6 +4,8 @@
 namespace TRAW\EventNotifications\Utility;
 
 
+use HaydenPierce\ClassFinder\ClassFinder;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TRAW\EventNotifications\Domain\Model\Dto\EmConfiguration;
 use TRAW\EventNotifications\Service\SettingsService;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
@@ -13,7 +15,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * Class EventsRegistry
  * @package TRAW\EventNotifications\Events
  */
-class TcaUtility
+class TcaUtility implements EventDispatcherInterface
 {
     /**
      * @var EmConfiguration
@@ -41,6 +43,10 @@ class TcaUtility
      */
     public function getNotificationTypes(array &$configuration)
     {
+        $classes = ClassFinder::getClassesInNamespace('TRAW\EventNotifications\Notifications');
+
+
+
         if($this->settings->getEnableEmailNotifications()) {
             $configuration['items'][] = [
                 LocalizationUtility::translate($configuration['config']['itemsProcConfig']['languageKey'] . '1') ?? 'email',
@@ -70,5 +76,10 @@ class TcaUtility
                 ];
             }
         }
+    }
+
+    public function dispatch(object $event)
+    {
+
     }
 }

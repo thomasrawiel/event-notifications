@@ -37,29 +37,31 @@ return [
         'iconfile' => 'EXT:event_notifications/Resources/Public/Icons/Extension.svg',
         'searchFields' => 'uid,title',
     ],
-    'types' => [
-        0 => [
-            'showitem' => "
+    'types' => \TRAW\EventNotifications\Utility\TcaUtility::getAvailableTypes(
+        [
+            \TRAW\EventNotifications\Notifications\DefaultNotification::class => [
+                'showitem' => "
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,
                 --div--;${lll}tab.events, --palette--;;events,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
-        ],
-        \TRAW\EventNotifications\Utility\TcaUtility::NOTIFICATION_TYPE_EMAIL => [
-            'showitem' => "
+            ],
+            \TRAW\EventNotifications\Notifications\EmailNotification::class => [
+                'showitem' => "
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,             
                 --div--;${lll}tab.events, --palette--;;events,
                 --div--;Microsoft Teams, --palette--;;email,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
-        ],
-        \TRAW\EventNotifications\Utility\TcaUtility::NOTIFICATION_TYPE_TEAMS => [
-            'showitem' => "
+            ],
+            \TRAW\EventNotifications\Notifications\MsTeamsNotification::class => [
+                'showitem' => "
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,
                 --div--;${lll}tab.events, --palette--;;events,
                 --div--;Microsoft Teams, --palette--;;teams,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
-        ],
+            ],
 
-    ],
+        ]
+    ),
     'palettes' => [
         'general' => [
             'showitem' => 'type,--linebreak--,title,--linebreak--,notes',

@@ -90,6 +90,7 @@ class MsTeamsNotification extends DefaultNotification
             $messageData[] = [
                 'facts' => $facts
             ];
+
         }
 
 
