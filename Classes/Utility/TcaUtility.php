@@ -45,8 +45,6 @@ class TcaUtility implements EventDispatcherInterface
     {
         $classes = ClassFinder::getClassesInNamespace('TRAW\EventNotifications\Notifications');
 
-
-
         if($this->settings->getEnableEmailNotifications()) {
             $configuration['items'][] = [
                 LocalizationUtility::translate($configuration['config']['itemsProcConfig']['languageKey'] . '1') ?? 'email',
@@ -61,6 +59,10 @@ class TcaUtility implements EventDispatcherInterface
                 'ext-eventnotifications-type-teams',
             ];
         }
+    }
+
+    public static function getAvailableTypes(array $configuration): array {
+
     }
 
     /**

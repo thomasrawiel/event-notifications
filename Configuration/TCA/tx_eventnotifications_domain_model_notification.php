@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die('Access denied.');
+defined('TYPO3') or die('Access denied.');
 $lll = 'LLL:EXT:event_notifications/Resources/Private/Language/locallang_tca.xlf:';
 
 return [
@@ -37,31 +37,28 @@ return [
         'iconfile' => 'EXT:event_notifications/Resources/Public/Icons/Extension.svg',
         'searchFields' => 'uid,title',
     ],
-    'types' => \TRAW\EventNotifications\Utility\TcaUtility::getAvailableTypes(
-        [
-            \TRAW\EventNotifications\Notifications\DefaultNotification::class => [
-                'showitem' => "
+    'types' => [
+        0 => [
+            'showitem' => "
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,
                 --div--;${lll}tab.events, --palette--;;events,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
-            ],
-            \TRAW\EventNotifications\Notifications\EmailNotification::class => [
-                'showitem' => "
+        ],
+        1 => [
+            'showitem' => "
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,             
                 --div--;${lll}tab.events, --palette--;;events,
                 --div--;Microsoft Teams, --palette--;;email,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
-            ],
-            \TRAW\EventNotifications\Notifications\MsTeamsNotification::class => [
-                'showitem' => "
+        ],
+        2 => [
+            'showitem' => "
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general, --palette--;;general,
                 --div--;${lll}tab.events, --palette--;;events,
-                --div--;Microsoft Teams, --palette--;;teams,
+                --div--;Email, --palette--;;email,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;visibility"
-            ],
-
-        ]
-    ),
+        ],
+    ],
     'palettes' => [
         'general' => [
             'showitem' => 'type,--linebreak--,title,--linebreak--,notes',

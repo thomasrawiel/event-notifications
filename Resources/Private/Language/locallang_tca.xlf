@@ -31,6 +31,21 @@
             <trans-unit id="teams_webhook_url">
                 <source>Incoming Webhook URL</source>
             </trans-unit>
+            <trans-unit id="events.type.backendUserLogin">
+                <source>A backend user logs in</source>
+            </trans-unit>
+            <trans-unit id="events.type.afterDatabaseOperation">
+                <source>Record is added or edited</source>
+            </trans-unit>
+            <trans-unit id="events.type.moveRecord">
+                <source>Record is moved</source>
+            </trans-unit>
+            <trans-unit id="events.type.deleteRecord">
+                <source>Record is deleted</source>
+            </trans-unit>
+            <trans-unit id="events.type.clearCache">
+                <source>The cache is cleared</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

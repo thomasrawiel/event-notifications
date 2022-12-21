@@ -22,6 +22,7 @@ class BackendUserLoginMessage extends DefaultMessage
         $this->text = $this->createUserName() . " has logged into the backend from " . $event->getBackendUser()->getRemoteAddress();
 
         $this->detailData = [
+            'Host' => $event->getBackendUser()->getHost(),
             'User-Agent' => $event->getBackendUser()->getHttpUserAgent(),
             'Accept-Language' => $event->getBackendUser()->getHttpAcceptLanguage(),
         ];

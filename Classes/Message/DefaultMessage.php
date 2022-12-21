@@ -26,10 +26,19 @@ class DefaultMessage implements MessageInterface
      */
     protected array $detailData = [];
 
+    /**
+     * @var AbstractEvent
+     */
     protected AbstractEvent $event;
 
+    /**
+     * @var BackendUserInfo
+     */
     protected BackendUserInfo $backendUserInfo;
 
+    /**
+     * @param AbstractEvent $event
+     */
     public function __construct(AbstractEvent $event)
     {
         $this->event = $event;
@@ -60,6 +69,9 @@ class DefaultMessage implements MessageInterface
         return $this->detailData;
     }
 
+    /**
+     * @return array[]
+     */
     public function getMessageData(): array
     {
         return [
@@ -70,6 +82,9 @@ class DefaultMessage implements MessageInterface
         ];
     }
 
+    /**
+     * @return string
+     */
     protected function createUserName(): string
     {
         if (empty($this->backendUserInfo->getRealName())) {
@@ -78,9 +93,14 @@ class DefaultMessage implements MessageInterface
             $username = $this->backendUserInfo->getRealName() . " (" . $this->backendUserInfo->getUsername() . ")";
         }
 
-        if ($this->backendUserInfo->getAdmin()) {
-            $username .= ' [ADMIN]';
+        if ($this->backendUserInfo->isAdmin()) {
+            if ($this->backendUserInfo->isSystemMaintainer()) {
+                $username .= ' [SUPER-ADMIN]';
+            } else {
+                $username .= ' [ADMIN]';
+            }
         }
+
 
         return $username;
     }
