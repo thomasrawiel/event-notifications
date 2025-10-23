@@ -14,7 +14,7 @@
     }
   },
   "require": {
-    "typo3/cms-core": "^10 || ^11",
+    "typo3/cms-core": "^13",
     "haydenpierce/class-finder": "^0.4",
     "traw/event-dispatch": "dev-develop"
   },
