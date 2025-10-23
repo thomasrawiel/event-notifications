@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2011-10-18T18:20:51Z"
+          product-name="event_notifications">
+        <header/>
+        <body>
+            <trans-unit id="settings.notifications">
+                <source>Notifications</source>
+            </trans-unit>
+            <trans-unit id="enableEmailNotifications">
+                <source>Enable Notification Type "Email"</source>
+            </trans-unit>
+            <trans-unit id="enableMsTeamsNotifications">
+                <source>Enable Notification Type "Microsoft Teams Webhook"</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

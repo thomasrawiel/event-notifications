@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2011-10-18T18:20:51Z"
+          product-name="event_notifications">
+        <header/>
+        <body>
+            <trans-unit id="tab.events">
+                <source>Events</source>
+            </trans-unit>
+            <trans-unit id="tx_eventnotifications_domain_model_notification">
+                <source>Notification</source>
+            </trans-unit>
+            <trans-unit id="tx_eventnotifications_domain_model_notification.type.I.0">
+                <source>Default</source>
+            </trans-unit>
+            <trans-unit id="tx_eventnotifications_domain_model_notification.type.I.1">
+                <source>Email</source>
+            </trans-unit>
+            <trans-unit id="tx_eventnotifications_domain_model_notification.type.I.2">
+                <source>Microsoft Teams</source>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="notes">
+                <source>Description (internal)</source>
+            </trans-unit>
+            <trans-unit id="events">
+                <source>Notification Events</source>
+            </trans-unit>
+            <trans-unit id="teams_webhook_url">
+                <source>Incoming Webhook URL</source>
+            </trans-unit>
+            <trans-unit id="events.type.backendUserLogin">
+                <source>A backend user logs in</source>
+            </trans-unit>
+            <trans-unit id="events.type.afterDatabaseOperation">
+                <source>Record is added or edited</source>
+            </trans-unit>
+            <trans-unit id="events.type.moveRecord">
+                <source>Record is moved</source>
+            </trans-unit>
+            <trans-unit id="events.type.deleteRecord">
+                <source>Record is deleted</source>
+            </trans-unit>
+            <trans-unit id="events.type.clearCache">
+                <source>The cache is cleared</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
